@@ -7,6 +7,7 @@ public class Agente extends Thread{
 	private Mesa mesa;
 	
 	public Agente(Mesa mesa) {
+		super("Agente");
 		this.mesa = mesa;
 	}
 	

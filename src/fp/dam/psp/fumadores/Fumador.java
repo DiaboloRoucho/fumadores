@@ -7,6 +7,7 @@ public class Fumador extends Thread{
 	Mesa mesa;
 	
 	public Fumador(String nombre, Ingrediente ingrediente, Mesa mesa) {
+		super(nombre);
 		this.ingrediente = ingrediente;
 		this.mesa = mesa;
 	}
