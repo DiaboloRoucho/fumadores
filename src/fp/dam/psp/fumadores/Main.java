@@ -55,7 +55,7 @@ public class Main extends JFrame implements WindowListener {
 		pausa.setEnabled(false);
 		reanudar.setEnabled(true);
 		textArea.append("PAUSADO\n");
-		// TODO pausar fumadores y agente
+		mesa.parar();
 	}
 	
 	private void reanudar(ActionEvent e) {
@@ -63,6 +63,7 @@ public class Main extends JFrame implements WindowListener {
 		reanudar.setEnabled(false);
 		textArea.append("REANUDADO\n");
 		// TODO reanudar fumadores y agente
+		mesa.reanudar();
 	}
 	
 	private void iniciar() {
@@ -87,7 +88,10 @@ public class Main extends JFrame implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		// TODO finalizar hilos de forma ordenada antes de salir
+		f1.interrupt();
+		f2.interrupt();
+		f3.interrupt();
+		agente.interrupt();
 		System.exit(0);
 	}
 

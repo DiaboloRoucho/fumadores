@@ -14,14 +14,16 @@ public class Fumador extends Thread{
 
 	@Override
 	public void run() {
-		while(true) {
+		while(!isInterrupted()) {
+			try {
+				sleep(100);
+			} catch (InterruptedException e) {interrupt();}
 			mesa.retirar(ingrediente);
 			try {
 				sleep(1000);
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) { interrupt();}
 			actualizar(getName() + " terminó de fumar\n");
 		}
-		// TODO quitar el comentario de la línea siguiente cuando se pueda finalizar el hilo (es decir, cuando el bucle ya no sea infinito)
-//		actualizar (getName() + " finaliza su tarea");
+		actualizar (getName() + " finaliza su tarea");
 	}
 }
