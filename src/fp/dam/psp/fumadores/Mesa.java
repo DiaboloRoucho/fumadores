@@ -46,14 +46,16 @@ public class Mesa {
 		} else
 			try {
 				wait();
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			}
 	}
 
 	public void parar() {
 		pausa = true;
 	}
 	
-	public void reanudar() {
+	public synchronized void reanudar() {
 		pausa = false;
 		notifyAll();
 	}
